@@ -1,3 +1,9 @@
 fn main() {
-    println!("Hello, world!");
+    println!("===============");
+    println!("MIHIR OS");
+    println!("===============");
+    println!("Booting....");
+    println!("Loading kernel....");
+    println!("Initializing hardware....");
+    println!("\nWelcome to MihirOS!");
 }
