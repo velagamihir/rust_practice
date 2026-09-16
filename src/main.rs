@@ -1,25 +1,19 @@
 fn main() {
-    let ram = 16;
-    let cpu_cores = 8;
-    let cpu_threads = 16;
-    let kernel_running = false;
-    println!("=========");
-    println!("MihirOS Check!");
-    println!("=========");
-    println!(
-        "RAM: {} GB\nCPU Cores: {}\nCPU Threads: {}",
-        ram, cpu_cores, cpu_threads
-    );
-    let ram_pass = ram >= 8;
-    let cpu_cores_pass = (cpu_cores >= 4) && (cpu_threads >= 8);
-    if kernel_running {
-        println!("RUNNING...");
-    } else {
-        println!("Starting Kernel");
+    println!("===========");
+    println!("GaneshOS Booting");
+    println!("===========");
+    for i in 1..=5 {
+        println!("Boot Step {}", i);
     }
-    let mut system_req = "FAIL";
-    if ram_pass && cpu_cores_pass {
-        system_req = "PASS";
+    println!();
+    println!("Boot Sequence Complete!");
+    println!("GaneshOS is ready!\n");
+
+    println!("Shut down process initiated");
+    let mut countdown = 5;
+    while countdown > 0 {
+        println!("Shutting down in {}", countdown);
+        countdown -= 1;
     }
-    println!("System Requirements: {}", system_req);
+    println!("Shut down complete");
 }
