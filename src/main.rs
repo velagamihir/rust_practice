@@ -1,19 +1,27 @@
+// Booting function
+fn boot() {
+    println!("GaneshOS Booting...");
+}
+// Function to check the hardware requirements
+fn check_hardware() {
+    println!("Checking hardware...");
+    println!("Hardware check complete!");
+}
+//Function to calculate the free ram
+fn calculate_free_ram(total_ram: i8, used_ram: i8) -> i8 {
+    let free_ram: i8 = total_ram - used_ram;
+    free_ram
+}
+fn start_kernel() {
+    println!("Starting GaneshOS kernel...");
+    println!("kernel started!");
+}
 fn main() {
-    println!("===========");
-    println!("GaneshOS Booting");
-    println!("===========");
-    for i in 1..=5 {
-        println!("Boot Step {}", i);
-    }
-    println!();
-    println!("Boot Sequence Complete!");
-    println!("GaneshOS is ready!\n");
-
-    println!("Shut down process initiated");
-    let mut countdown = 5;
-    while countdown > 0 {
-        println!("Shutting down in {}", countdown);
-        countdown -= 1;
-    }
-    println!("Shut down complete");
+    boot();
+    check_hardware();
+    let total_ram = 16;
+    let used_ram = 10;
+    let free_ram: i8 = calculate_free_ram(total_ram, used_ram);
+    println!("Free RAM: {}", free_ram);
+    start_kernel();
 }
