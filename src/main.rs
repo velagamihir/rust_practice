@@ -1,27 +1,11 @@
-// Booting function
-fn boot() {
-    println!("GaneshOS Booting...");
-}
-// Function to check the hardware requirements
-fn check_hardware() {
-    println!("Checking hardware...");
-    println!("Hardware check complete!");
-}
-//Function to calculate the free ram
-fn calculate_free_ram(total_ram: i8, used_ram: i8) -> i8 {
-    let free_ram: i8 = total_ram - used_ram;
-    free_ram
-}
-fn start_kernel() {
-    println!("Starting GaneshOS kernel...");
-    println!("kernel started!");
-}
 fn main() {
-    boot();
-    check_hardware();
-    let total_ram = 16;
-    let used_ram = 10;
-    let free_ram: i8 = calculate_free_ram(total_ram, used_ram);
-    println!("Free RAM: {}", free_ram);
-    start_kernel();
+    let os_name = String::from("GaneshOS");
+    let kernel_os_name: String = os_name;
+    println!("{}", kernel_os_name);
+    let kernel_name = String::from("GaneshOS Kernel");
+    let kernel_name_clone = kernel_name.clone();
+    println!("{}\n{}", kernel_name, kernel_name_clone);
+    let sample_number: i8 = 16;
+    let sample_number_copy: i8 = sample_number;
+    println!("{}\n{}", sample_number, sample_number_copy);
 }
