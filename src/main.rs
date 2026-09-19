@@ -1,7 +1,10 @@
 fn main() {
-    let mut sample_array = [0, 1, 2, 3];
-    println!("Initial Array: {:?}", sample_array);
-    sample_array[2] = 8;
-    println!("Updated array: {:?}", sample_array);
-    println!("Third Core: {}", sample_array[2]);
+    let ganeshos_cores = [0, 1, 2, 3, 4, 5];
+    let group2_cores: &[i32] = &ganeshos_cores[2..5];
+    let no_of_cores: usize = inspect_cores(group2_cores);
+    println!("Number of cores: {}", no_of_cores);
+}
+fn inspect_cores(group2_cores: &[i32]) -> usize {
+    // Returning the number of cores in the group
+    group2_cores.len()
 }
