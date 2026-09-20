@@ -1,15 +1,15 @@
 fn main() {
-    let mut cpu_cores = [0, 0, 0, 0, 0, 0];
-    let cpu_cores_slice: &mut [i32] = &mut cpu_cores[2..5];
-    let activated_cores: usize = activate_cores(cpu_cores_slice);
-    println!("Activated cores: {}", activated_cores);
-    println!("Updated Cores: {:?}", cpu_cores);
+    let cpu_cores: [i32; 6] = [1, 0, 1, 0, 1, 1];
+    let cpu_cores_slice = &cpu_cores[1..5];
+    let active_cores: usize = inspect_cpu_status(cpu_cores_slice);
+    println!("Number of active cores: {}", active_cores);
 }
-fn activate_cores(cpu_cores_slice: &mut [i32]) -> usize {
-    let mut cores_activated = 0;
+fn inspect_cpu_status(cpu_cores_slice: &[i32]) -> usize {
+    let mut active_cores = 0;
     for core in cpu_cores_slice {
-        *core = 1;
-        cores_activated += 1;
+        if *core == 1 {
+            active_cores += 1;
+        }
     }
-    cores_activated
+    active_cores
 }
