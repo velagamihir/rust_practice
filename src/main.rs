@@ -1,27 +1,29 @@
-enum Event {
-    KeyPress { ch: char },
-    MouseClick { x: i32, y: i32 },
-    Resize { width: u32, height: u32 },
+enum Command {
+    Add(i32, i32),
+    Subtract(i32, i32),
+    Multiply(i32, i32),
     Quit,
 }
 fn main() {
-    let event1 = Event::KeyPress { ch: 'A' };
-    let event2 = Event::MouseClick { x: 90, y: 80 };
-    let event3 = Event::Resize {
-        width: 1800,
-        height: 1600,
-    };
-    let event4 = Event::Quit;
-    handle_event(event1);
-    handle_event(event2);
-    handle_event(event3);
-    handle_event(event4);
+    let add = Command::Add(10, 5);
+    let subtract = Command::Subtract(10, 5);
+    let product = Command::Multiply(10, 5);
+    let quit = Command::Quit;
+    let add_result = execute_command(add);
+    let sub_result = execute_command(subtract);
+    let prod_result = execute_command(product);
+    let quit_result = execute_command(quit);
+    println!(
+        "{}\n{}\n{}\n{}",
+        add_result, sub_result, prod_result, quit_result
+    );
 }
-fn handle_event(event: Event) {
-    match event {
-        Event::KeyPress { ch } => println!("Key Pressed: {}", ch),
-        Event::MouseClick { x, y } => println!("Mouse clicked at ({},{})", x, y),
-        Event::Resize { width, height } => println!("Window Resized to {}*{}", width, height),
-        Event::Quit => println!("System quitting"),
-    }
+fn execute_command(command: Command) -> i32 {
+    let result = match command {
+        Command::Add(x, y) => x + y,
+        Command::Subtract(x, y) => x - y,
+        Command::Multiply(x, y) => x * y,
+        Command::Quit => 0,
+    };
+    result
 }
