@@ -1,9 +1,8 @@
-fn get_name() -> Option<i32> {
-    Some(50)
-}
 fn main() {
-    let result: Option<i32> = get_name();
-    if result.is_some() {
-        println!("Value Exists\nValue: {}", result.unwrap());
-    }
+    let result: Option<i32> = get_score();
+    let result_final = result.unwrap_or(0);
+    println!("Score: {}", result_final);
+}
+fn get_score() -> Option<i32> {
+    None
 }
