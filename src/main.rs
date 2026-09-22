@@ -1,10 +1,9 @@
-fn get_number() -> Option<i32> {
-    Some(10)
+fn get_name() -> Option<String> {
+    Some(String::from("Mihir"))
 }
 fn main() {
-    let result = get_number();
-    match result {
-        Some(x) => println!("Result is: {}", x),
-        None => println!("None"),
+    let result = get_name();
+    if let Some(x) = result {
+        println!("Name: {}", x);
     }
 }
