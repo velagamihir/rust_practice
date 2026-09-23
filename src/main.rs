@@ -1,7 +1,12 @@
-fn get_number() -> Option<i32> {
-    Some(10)
+fn divide(a: i32, b: i32) -> Option<i32> {
+    if b == 0 {
+        return None;
+    }
+    return Some(a / b);
 }
 fn main() {
-    let result: Option<i32> = get_number().map(|x| x * 5);
+    let b = 2;
+    let option = Some(20);
+    let result = option.and_then(|x| divide(x, b));
     println!("Result: {:?}", result);
 }
