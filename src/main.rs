@@ -1,7 +1,11 @@
-fn get_score() -> Result<i32, String> {
-    Err(String::from("Score unavailable"))
+fn divide(a: i32, b: i32) -> Result<i32, String> {
+    if b == 0 {
+        return Err(String::from("Not able to divide by zero"));
+    }
+    Ok(a / b)
 }
 fn main() {
-    let result: Result<i32, String> = get_score();
-    println!("Result: {}", result.unwrap_or(0));
+    let b = 2;
+    let result: Result<i32, String> = Ok(20).and_then(|x| divide(x, b));
+    println!("Result: {:?}", result);
 }
