@@ -1,15 +1,14 @@
-fn divide(a: i32, b: i32) -> Result<i32, String> {
-    if b == 0 {
-        return Err(String::from("Cannot be divided by 0"));
+fn check_age(age: i32) -> Result<i32, String> {
+    if age >= 18 {
+        return Ok(age);
     }
-    Ok(a / b)
+    Err(String::from("Age is below 18"))
 }
 fn main() {
-    let a = 20;
-    let b = 2;
-    let result = divide(a, b);
-    match result {
-        Ok(x) => println!("Result: {}", x),
-        Err(x) => println!("Error: {}", x),
+    let result: Result<i32, String> = check_age(10);
+    if let Ok(age) = result {
+        println!("Age accepted: {}", age);
+    } else {
+        println!("Age rejected");
     }
 }
