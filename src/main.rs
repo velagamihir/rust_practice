@@ -1,14 +1,14 @@
-fn check_age(age: i32) -> Result<i32, String> {
-    if age >= 18 {
-        return Ok(age);
+fn check_number(number: i32) -> Result<i32, String> {
+    if number >= 0 {
+        return Ok(number);
     }
-    Err(String::from("Age is below 18"))
+    return Err(String::from("Number is negative"));
 }
 fn main() {
-    let result: Result<i32, String> = check_age(10);
-    if let Ok(age) = result {
-        println!("Age accepted: {}", age);
+    let result: Result<i32, String> = check_number(10);
+    if result.is_ok() {
+        println!("Number is positive: {}", result.ok().unwrap());
     } else {
-        println!("Age rejected");
+        println!("Number is not positive");
     }
 }
