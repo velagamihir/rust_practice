@@ -1,10 +1,10 @@
 fn get_score() -> Result<i32, String> {
-    Err(String::from("Score unavailable"))
+    Err(String::from("Score Unavailable"))
 }
 fn main() {
-    let result = get_score();
-    println!(
-        "{:?}",
-        result.map_err(|x| format!("Failed to get Score: {}", x))
-    );
+    let result = get_score().unwrap_or_else(|error| {
+        println!("Error: {}", error);
+        0
+    });
+    println!("Result: {}", result);
 }
