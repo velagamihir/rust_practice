@@ -1,12 +1,15 @@
-fn divide(a: i32, b: i32) -> Option<i32> {
+fn divide(a: i32, b: i32) -> Result<i32, String> {
     if b == 0 {
-        return None;
+        return Err(String::from("Cannot be divided by 0"));
     }
-    return Some(a / b);
+    Ok(a / b)
 }
 fn main() {
+    let a = 20;
     let b = 2;
-    let option = Some(20);
-    let result = option.and_then(|x| divide(x, b));
-    println!("Result: {:?}", result);
+    let result = divide(a, b);
+    match result {
+        Ok(x) => println!("Result: {}", x),
+        Err(x) => println!("Error: {}", x),
+    }
 }
