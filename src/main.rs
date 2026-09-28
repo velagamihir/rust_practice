@@ -1,22 +1,24 @@
-fn get_score() -> Result<i32, String> {
-    Ok(201)
+fn create_process() -> Vec<i32> {
+    let process_ids = vec![101, 202, 303];
+    process_ids
 }
-fn add_bonus(score: i32) -> Result<i32, String> {
-    Ok(score + 10)
+fn add_process(process_ids: &mut Vec<i32>, process_id: i32) {
+    process_ids.push(process_id);
 }
-fn validate_score(score: i32) -> Result<i32, String> {
-    if score > 100 {
-        return Err(String::from("Score greater than 100")).map_err(|x| format!("Error: {}", x));
-    }
-    Ok(score)
-}
-fn calculate() -> Result<i32, String> {
-    let score = get_score()?;
-    let score = add_bonus(score)?;
-    let score = validate_score(score);
-    score
+fn remove_process(process_ids: &mut Vec<i32>) -> Option<i32> {
+    return process_ids.pop();
 }
 fn main() {
-    let score = calculate();
-    println!("Result: {:?}", score);
+    let mut process_ids = create_process();
+    println!("Process IDs: {:?}", process_ids);
+    let process_id: i32 = 404;
+    add_process(&mut process_ids, process_id);
+    println!("After Adding: {:?}", process_ids);
+    let removed_process: Option<i32> = remove_process(&mut process_ids);
+    println!(
+        "Removed process: {:?}\nFinal processes: {:?}\nProcesses Length: {}",
+        removed_process,
+        process_ids,
+        process_ids.len()
+    );
 }
