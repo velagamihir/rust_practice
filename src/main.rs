@@ -1,12 +1,11 @@
-fn find_process(processes: &Vec<i32>, index: usize) -> Option<&i32> {
-    processes.get(index)
+fn scan_processes(processes: &Vec<i32>) {
+    for process in processes {
+        println!("Process: {}", process);
+    }
 }
 fn main() {
-    let processes = &vec![101, 202, 303, 404];
-    let index = 1;
-    let result: Option<&i32> = find_process(processes, index);
-    match result {
-        Some(&value) => println!("Process found: {}", value),
-        _ => println!("Process not found"),
-    }
+    let processes = vec![101, 202, 303, 404];
+    println!("Scanning started");
+    scan_processes(&processes);
+    println!("All processes scanned\nProcesses: {:?}", processes);
 }
